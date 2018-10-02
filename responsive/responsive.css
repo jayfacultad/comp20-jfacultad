@@ -1,1 +1,56 @@
-/* Responsive.css */
+/*******************************
+*    Responsive.css            *
+*    Jay Facultad              *
+*    COMP20 / F2018            *
+*    Lab 4 Responsive Design   *
+*******************************/
+
+@media only screen and (min-width: 1201px) {
+  .software {
+        background-image: url("software.png");
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        width: 450px;
+        height: 580px;   
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1200px) {
+  .software {
+        background-image: url("software.png");
+        background-repeat: no-repeat;
+        background-position: -440px 0;
+        width: 430px;
+        height: 580px;   
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1000px) {
+  .software {
+        background: url("software.png");
+        background-repeat: no-repeat;
+        background-position: -860px 0;
+        width: 430px;
+        height: 580px;  
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 800px) {
+  .software {
+        background: url("software.png");
+        background-repeat: no-repeat;
+        background-position: 0 -580px;
+        width: 720px;
+        height: 720px; 
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+        background: url("software.png");
+        background-repeat: no-repeat;
+        background-position: -710px -580px;
+        width: 430px;
+        height: 720px; 
+  }
+}
