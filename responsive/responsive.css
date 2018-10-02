@@ -9,7 +9,7 @@
   .software {
         background-image: url("software.png");
         background-repeat: no-repeat;
-        background-position: 0 0;
+        background-position: 0px 0px;
         width: 450px;
         height: 580px;   
   }
@@ -19,7 +19,7 @@
   .software {
         background-image: url("software.png");
         background-repeat: no-repeat;
-        background-position: -440px 0;
+        background-position: -440px 0px;
         width: 430px;
         height: 580px;   
   }
@@ -29,7 +29,7 @@
   .software {
         background: url("software.png");
         background-repeat: no-repeat;
-        background-position: -860px 0;
+        background-position: -860px 0px;
         width: 430px;
         height: 580px;  
   }
@@ -39,7 +39,7 @@
   .software {
         background: url("software.png");
         background-repeat: no-repeat;
-        background-position: 0 -580px;
+        background-position: 0px -580px;
         width: 720px;
         height: 720px; 
   }
