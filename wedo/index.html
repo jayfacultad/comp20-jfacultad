@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>We Do</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<h1 id="title">We Do</h1>
+
+<video src="https://www.cs.tufts.edu/comp/20/wedo.mp4" id="wedo" controls></video>
+<div id="lyrics"></div>
+
+<script>
+        var wedo = document.getElementById("wedo");
+        var lyrics = document.getElementById("lyrics");
+
+        wedo.addEventListener("timeupdate", function() {
+
+                if (wedo.currentTime > 4 && wedo.currentTime < 5 ) {
+                        lyrics.innerHTML = "Who controls the British crown?";
+                }
+                else if (wedo.currentTime > 5.5 && wedo.currentTime < 8.25) {
+                        lyrics.innerHTML = "Who keeps the metric system down?";
+                }
+                else if (wedo.currentTime > 8.25 && wedo.currentTime < 12.5) {
+                        lyrics.innerHTML = "We do, we do!";
+                }
+                else if (wedo.currentTime > 6.5 && wedo.currentTime < 14.5) {
+                        lyrics.innerHTML = "Who keeps Atlantis off the maps?";
+                }
+                else if (wedo.currentTime > 14.5 && wedo.currentTime < 16.75) {
+                        lyrics.innerHTML = "Who keeps the Martians under wraps?";
+                }
+                else if (wedo.currentTime > 16.75 && wedo.currentTime < 20.9) {
+                        lyrics.innerHTML = "We do, we do!";
+                }
+                else if (wedo.currentTime > 20.9 && wedo.currentTime < 25) {
+                        lyrics.innerHTML = "Who holds back the electric car?";
+                }
+                else if (wedo.currentTime > 25 && wedo.currentTime < 29) {
+                        lyrics.innerHTML = "Who makes Steve Guttenberg a star?";
+                }
+                else if (wedo.currentTime > 29 && wedo.currentTime < 33.6) {
+                        lyrics.innerHTML = "We do, we do!";
+                }
+                else if (wedo.currentTime > 33.6 && wedo.currentTime < 35.60) {
+                        lyrics.innerHTML = "Who robs cavefish of their sight?";
+                }
+                else if (wedo.currentTime > 35.60 && wedo.currentTime < 38) {
+                        lyrics.innerHTML = 'Who rigs every Oscar night?';
+                }
+                else if (wedo.currentTime > 38 && wedo.currentTime < 41) {
+                        lyrics.innerHTML = "We do!";
+                }
+                else if (wedo.currentTime > 41) {
+                        lyrics.innerHTML ="We do!";
+                }
+                }, false);
+</script>
+</body>
+</html> 

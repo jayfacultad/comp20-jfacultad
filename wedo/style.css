@@ -1,0 +1,29 @@
+/* Style.css */
+
+body {
+        background-color: lightgray;
+}
+
+#title {
+        text-align: center;
+        font-family: "Courier New";
+        font-size: 40px;
+
+}
+
+#wedo {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-style: solid;
+        border-color: black;
+        border-width: 4px;
+}
+
+#lyrics {
+        padding-top: 20px;
+        text-align: center;
+        font-size: 30px;
+        font-style: italic;
+        font-weight: bold;
+}
