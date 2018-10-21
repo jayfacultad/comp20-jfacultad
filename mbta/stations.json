@@ -1,54 +1,27 @@
-
-// var andrw = {lat: , lng: };
-// var portr = {lat: 42.3884, lng: -71.11914899999999};
-// var harsq = {lat: 42.373362, lng: -71.118956};
-// var jfk = {lat: 42.320685, lng: -71.052391};
-// var shmnl = {lat: 42.31129, lng: -71.053331};
-// var pktrm = {lat: 42.35639457, lng: -71.0624242};
-// var brdwy = {lat: 42.342622, lng: -71.056967};
-// var nqncy = {lat: 42.275275, lng: -71.029583};
-// var smmnl = {lat: 42.29312583, lng: -71.06573796000001};
-// var davis = {lat: 42.39674, lng: -71.121815};
-// var alfcl = {lat: 42.395428, lng: -71.142483};
-// var knncl = {lat: 42.36249079, lng: -71.08617653};
-// var chmnl = {lat: 42.361166 , lng: -71.070628};
-// var dwnxg = {lat: 42.355518, lng: -71.060225};
-// var qnctr = {lat: 42.251809, lng: -71.005409};
-// var qamnl = {lat: 42.233391, lng: -71.007153};
-// var asmnl = {lat: 42.284652, lng: -71.06448899999999};
-// var wlsta = {lat: 42.2665139, lng: -71.0203369};
-// var fldcr = {lat: 42.300093 , lng: -71.061667};
-// var cntsq = {lat: 42.365486, lng: -71.103802};
-// var brntn = {lat: 42.2078543, lng: -71.0011385};
-
-
 {
-  "type": "FeatureCollection", 
-  "features":
-[
-     {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [42.352271,
-        -71.05524200000001
-      ]
-    },
-    "properties": {
-      "name": "South Station",
-      "icon": "http://maps.google.com/mapfiles/dir_0.png"
-    }
-  }, {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [42.330154,
-        -71.057655
-      ]
-    },
-    "properties": {
-      "name": "Andrew",
-      "icon": "http://maps.google.com/mapfiles/dir_0.png",
-    }
-  }]
-};
+"type": "FeatureCollection",
+"features": [
+        {
+                "type": "Feature",
+                "geometry": {
+                        "type": "Point",
+                        "coordinates": [42.352271, -71.05524200000001]
+                },
+                "properties": {
+                        "name": "South Station",
+                        "icon": "http://maps.google.com/mapfiles/dir_0.png"
+                }
+        }, 
+        {
+                "type": "Feature",
+                "geometry": {
+                        "type": "Point",
+                        "coordinates": [42.330154, -71.057655]
+                },
+                "properties": {
+                        "name": "Andrew",
+                        "icon": "http://maps.google.com/mapfiles/dir_0.png"
+                }
+        }
+]
+}
