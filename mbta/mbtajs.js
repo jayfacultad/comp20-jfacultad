@@ -130,7 +130,7 @@ features.forEach(function(feature) {
   var marker = new google.maps.Marker(
   {
     position: feature.position,
-    icon: 'https://maps.google.com/mapfiles/kml/shapes/info-i_maps.png',
+    icon: 'marker.png',
     map: map
   })
 });
