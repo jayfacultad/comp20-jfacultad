@@ -138,6 +138,7 @@ features.forEach(function(feature) {
 
 
 
+
 // Try HTML5 geolocation.
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -147,8 +148,12 @@ if (navigator.geolocation) {
     };
 
     infoWindow.setPosition(pos);
-    infoWindow.setContent('Location found.');
-    infoWindow.open(map);
+var geomarker = new google.maps.Marker(
+  {
+    position: pos,
+    icon: 'geomarker.png',
+    map: map
+  });
     map.setCenter(pos);
   }, function() {
     handleLocationError(true, infoWindow, map.getCenter());
