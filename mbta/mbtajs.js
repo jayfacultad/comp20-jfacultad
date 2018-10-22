@@ -164,25 +164,50 @@ features.forEach(function(feature) {
     icon: 'marker.png',
     map: map
   });
-  // Info window displaying schedule is displayed when the user clicks on staiton marker
+  // Info window displaying schedule is displayed when the user clicks on staiton marker.
+  // For a more accurate schedule, the information is requested each time the staiton is clicked.
   marker.addListener('click', function() {
-  var stop_id = feature.id;
   var request = new XMLHttpRequest();
-  request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
+  request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + feature.id, true);
   request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
                 var theData = request.responseText;
                 var schedule = JSON.parse(theData);
-                contentString = schedule.data;
-                console.log(contentString);
-                infowindowClick.setContent("<div>" + contentString + "</div>");
+
+                var upcomingTrain = [];
+                var direction;
+                for (i = 0; i < schedule.data.length; i++) {
+                        if (JSON.stringify(schedule.data[i].attributes["direction_id"]) == 1) {
+                                direction = "Northbound &nbsp; (Alewife)";
+                        }  
+                        else if (JSON.stringify(schedule.data[i].attributes["direction_id"]) == 0) {
+                                direction = "Southbound &nbsp; (Ashmont/Braintree)";
+                        }
+                        var time = schedule.data[i].attributes["departure_time"];
+                        time = time.substring(11, time.length - 6);
+                        upcomingTrain[i] = 
+                                time + 
+                                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + 
+                                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + 
+                                direction + 
+                                "<br>";
+                        }
+                infowindowClick.setContent(
+                        "<div id='name'>" + 
+                        feature.name + 
+                        "</div>" +
+                        "<br>" +
+                        "<div id='header'>" + 
+                        "Departure" + 
+                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + 
+                        "Direction" + "</div>" + 
+                        "<div id='schedule'>" + upcomingTrain.join('') + "</div>");
                 infowindowClick.open(map, marker);
         }
   }
   request.send();
 });
 });
-
 
 
 // Creates a 2-pixel-wide red polyline connection the red line route.
