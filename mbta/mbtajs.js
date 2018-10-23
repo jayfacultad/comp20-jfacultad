@@ -6,7 +6,7 @@ var map, infoWindow;
 function initMap() {
 map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 42.352271, lng: -71.05524200000001},
-    zoom: 13
+    zoom: 14
     });
 infoWindow = new google.maps.InfoWindow;
 
@@ -122,7 +122,6 @@ var features = [
     name: 'Braintree',
     id: 'place-brntn'
   },
-
 ];
 
 // Content window for station schedule
@@ -155,8 +154,19 @@ features.forEach(function(feature) {
             else if (JSON.stringify(schedule.data[i].attributes["direction_id"]) == 0) {
                 direction = "Southbound &nbsp; (Ashmont/Braintree)";
             }
-            var time = schedule.data[i].attributes["departure_time"];
-            time = time.substring(11, time.length - 6);
+
+            var time;
+            time = schedule.data[i].attributes["departure_time"];
+            
+            // If departure time is "null", display message for no data
+            if (time == null) {
+                time = "No data &nbsp";
+                direction = "N/A";
+            } else {
+                time = time.substring(11, time.length - 6);
+            }
+
+            // Adds departure times and direction in array.
             upcomingTrain[i] = 
                 time + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + 
@@ -165,7 +175,8 @@ features.forEach(function(feature) {
                 "<br>";
             };
 
-        // Set the infowindow to display the clicked station's info
+        // Set the infowindow to display the clicked station's info (extracted from array above).
+        if (feature.name != 'Wollaston'){
         infowindowClick.setContent(
             "<div id='name'>" + 
             feature.name + "</div>" +"<br>" +
@@ -173,14 +184,20 @@ features.forEach(function(feature) {
             "Departure" + 
             "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + 
             "Direction" + "</div>" + 
-            "<div id='schedule'>" + upcomingTrain.join('') + "</div>");
+            "<div id='schedule'>" + upcomingTrain.join('') + "</div>");}
+        // Special message for Wollaston station
+        else {
+            infowindowClick.setContent(
+            "<div id='name'>" + 
+            feature.name + "</div>" +"<br>" +
+            "No information avaialable for this station");
+        }
         infowindowClick.open(map, marker);
         }
   }
   request.send();
 });
 });
-
 
 // Creates a 2-pixel-wide red polyline connection for the red line route.
 var stationCoordinates = [
@@ -251,7 +268,7 @@ var geoClick = new google.maps.InfoWindow;
 var geoLineCoordinates;
 var closest_lat;
 var closest_lng;
-geomarker.addListener('click', function() {
+
     var lat2 = geomarker.position.lat();
     var lon2 = geomarker.position.lng();
     var R = 6371; // radius of earth in km
@@ -281,26 +298,35 @@ for( i=0; i<features.length; i++ ) {
             station = features[i].name;
         }  
    }
+
+// Display neartest station and distance from geolocation when user's location is clicked.
+geomarker.addListener('click', function() {
     // Convert km to miles
     closest = closest * 0.62137;
     geoClick.setContent(
         "Closest station is " + closest.toFixed(2) + " miles away: " + station
         );
     geoClick.open(map, geomarker);
-
-    // Add polyline from geolocation to nearest station
-    geoLineCoordinates = [ 
-        {lat: closest_lat, lng: closest_lng},
-        {lat: lat2, lng: lon2} ];
-    var geoLine = new google.maps.Polyline({
-        path: geoLineCoordinates,
-        geodesic: true,
-        strokeColor: '#000000',
-        strokeOpacity: 1.0,
-        strokeWeight: 4
-        });
-    geoLine.setMap(map); 
 });
+
+// Add dotted polyline from geolocation to nearest station
+geoLineCoordinates = [ 
+    {lat: closest_lat, lng: closest_lng},
+    {lat: lat2, lng: lon2} ];
+var geoLine = new google.maps.Polyline({
+    path: geoLineCoordinates,
+    strokeOpacity: 0,
+    icons: [{
+        icon: {
+            path: 'M 0, -1 0, 1',
+            strokeOpacity: 1,
+            scale: 4
+        },
+        offset: '0',
+        repeat: '20px'
+    }]
+    });
+geoLine.setMap(map); 
 
 // Center map on current geolocation
 map.setCenter(pos);
