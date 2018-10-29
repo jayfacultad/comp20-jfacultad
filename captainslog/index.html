@@ -8,7 +8,48 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        // Your work will be done here...
+        $(document).ready(function(){
+
+                var elem = document.getElementById("log");
+                var output = "";
+                var logArray = [];
+
+                // Load messages stored in local storage, if any.
+                for (var i = 0; i < localStorage.length; i++) {
+                        logArray[i] = localStorage.getItem(localStorage.key(i)) + "<br>";
+                }
+                logArray.reverse();
+                for (var j = 0; j <logArray.length; j++)
+                {
+                        output = output + logArray[j];
+                }
+                logArray.reverse();
+                elem.innerHTML = output;
+
+                // Store timestamp and message in local storage.
+                var i = 0;
+                logArray[0] = '';
+                $('#msg').keypress(function(event){
+                        if(event.which == 13) {
+                                console.log(i);
+                                var date = new Date();
+                                var message = $('#msg').val();
+                                var logEntry = date + " - " + message;
+                                $('#msg').val('');
+                                localStorage.setItem(i, logEntry);
+                                logArray[i] = logEntry;
+                                i = i + 1;
+                                logArray.reverse();
+                                var allEntries = "";
+                                for (var j = 0; j < logArray.length; j++)
+                                {
+                                        allEntries = allEntries + logArray[j] + "<br>"; 
+                                }
+                                logArray.reverse();
+                                elem.innerHTML = allEntries;
+                        }                             
+                });
+        });
     </script>
 </head>
 
