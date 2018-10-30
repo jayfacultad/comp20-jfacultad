@@ -16,33 +16,37 @@
 
                 // Load messages stored in local storage, if any.
                 for (var i = 0; i < localStorage.length; i++) {
-                        logArray[i] = localStorage.getItem(localStorage.key(i)) + "<br>";
+                        logArray[i] = localStorage.getItem(localStorage.key(i));
                 }
                 logArray.reverse();
-                for (var j = 0; j <logArray.length; j++)
-                {
-                        output = output + logArray[j];
+                for (var j = 0; j <logArray.length; j++) {
+                        output = output + logArray[j] + "<br>";
                 }
                 logArray.reverse();
                 elem.innerHTML = output;
 
                 // Store timestamp and message in local storage.
-                var i = 0;
-                logArray[0] = '';
+                var i = localStorage.length;
                 $('#msg').keypress(function(event){
                         if(event.which == 13) {
-                                console.log(i);
                                 var date = new Date();
+                                var dateString = 
+                                        String(date.toDateString() + " at " + 
+                                        (date.getHours()<10?'0':'') + date.getHours() + ":" + 
+                                        (date.getMinutes()<10?'0':'') + date.getMinutes() + ":" + 
+                                        (date.getSeconds()<10?'0':'') + date.getSeconds());
                                 var message = $('#msg').val();
-                                var logEntry = date + " - " + message;
+                                message = message.toUpperCase();
+                                var logEntry = 
+                                        "<div id=" + "dateStyle" + ">" + dateString  + "</div>" + 
+                                        " - " + "<div id=" + "entry" + ">" + message + "</div>";
                                 $('#msg').val('');
-                                localStorage.setItem(i, logEntry);
+                                localStorage.setItem(new Date().getTime(), logEntry);
                                 logArray[i] = logEntry;
                                 i = i + 1;
                                 logArray.reverse();
                                 var allEntries = "";
-                                for (var j = 0; j < logArray.length; j++)
-                                {
+                                for (var j = 0; j < localStorage.length; j++) {
                                         allEntries = allEntries + logArray[j] + "<br>"; 
                                 }
                                 logArray.reverse();

@@ -1,3 +1,12 @@
-#log {
-        
+#entry {
+        display: inline;
+        font-style: italic;
+        font-weight: bold;
+        font-family: "Optima";
+        font-size: 22px;
+}
+
+#dateStyle {
+        display: inline;
+        font-family: "Verdana";
 }
