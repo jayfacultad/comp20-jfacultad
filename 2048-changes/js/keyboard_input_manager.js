@@ -1,4 +1,9 @@
-
+// Operation to suppress Enter key from submitting
+jQuery(document).keypress(function(event) {
+        if (event.keyCode == 13) {
+                event.preventDefault();
+        }
+});
 
 function KeyboardInputManager() {
   this.events = {};
@@ -15,16 +20,6 @@ function KeyboardInputManager() {
   }
 
   this.listen();
-
-// Add operation to extract username from text field
-document.getElementById("usernameField")
-    .addEventListener("keydown", function(event) {
-    if (event.keyCode === 13) {
-        toSendServer.username = document.getElementById("usernameField").value;
-        console.log(toSendServer.username);
-        sendData();     
-    }
-});
 
 window.addEventListener("keydown", function(e) {
     // space and arrow keys
