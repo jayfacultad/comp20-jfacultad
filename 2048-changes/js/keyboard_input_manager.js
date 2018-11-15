@@ -184,8 +184,15 @@ function sendData() {
                 score:          toSendServer.score,
                 grid:           toSendServer.grid
         },
+        // Popup for top 10 scores
         success: function(data) {
-                alert(JSON.stringify(data));
+                var extractData = JSON.stringify(data);
+                extractData = JSON.parse(extractData);
+                var popupContent = "TOP TEN SCORES\nUsername  (Score)  Timestamp\n";
+                for (var i = 0; i < extractData.length; i++) {
+                        popupContent += (i+1) + ". " + extractData[i].username + " (" + extractData[i].score + ") " + extractData[i].created_at + "\n";
+                };
+                alert(popupContent);
         }
         });
 }
