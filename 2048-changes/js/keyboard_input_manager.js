@@ -183,12 +183,9 @@ function sendData() {
                 username:       toSendServer.username,
                 score:          toSendServer.score,
                 grid:           toSendServer.grid
+        },
+        success: function(data) {
+                alert(JSON.stringify(data));
         }
         });
-
-        invokePopup();
-}
-
-function invokePopup() {
-        window.open("https://frozen-hamlet-64285.herokuapp.com/", "", "width=500,height=400");
 }
