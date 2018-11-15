@@ -174,12 +174,6 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
 
 
 function sendData() {
-        var date = new Date();
-        toSendServer.created_at = 
-                String(date.toDateString() + " at " + 
-                (date.getHours()<10?'0':'') + date.getHours() + ":" + 
-                (date.getMinutes()<10?'0':'') + date.getMinutes());
-
         toSendServer.grid = JSON.stringify(gridInfo);
 
         jQuery.ajax({
@@ -188,8 +182,7 @@ function sendData() {
         data: {
                 username:       toSendServer.username,
                 score:          toSendServer.score,
-                grid:           toSendServer.grid,
-                created_at:     toSendServer.created_at
+                grid:           toSendServer.grid
         }
         });
 

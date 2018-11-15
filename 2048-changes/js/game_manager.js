@@ -1,8 +1,7 @@
 var toSendServer = new Object(),
     username = null,
     score = null,
-    grid = null,
-    created_at = null;
+    grid = null;
 
 function GameManager(size, InputManager, Actuator, StorageManager) {
   this.size           = size; // Size of the grid
