@@ -10,18 +10,53 @@
 
 
 <body>
-        <h1>Security and Privacy Assessment of Assignment 3</h1>
+        <h1>Security and Privacy Assessment</h1>
         <h2>Introduction</h2>
-        <p>The product is a Node.js and mongodb database driver app. This app</p>
+        <p>Product: <a href="https://serene-castle-98212.herokuapp.com/home.html">https://serene-castle-98212.herokuapp.com/home.html</a></p>
+        <p>The product is a web server that utilizes a Node.js and mongodb database driver app. This app takes the following data from 2048 game and stores them in a MongoDB database server via a POST route: username, score, grid, and time/date created. The afformentioned data from each game session is saved as one document in the database collection. This app also retrieves and displays the afformentioned data via two GET routes: one for all documents from all usernames in the collection and one for all documents for a specified username in the collection.</p>
+        <p>The purpose of this effort is to perform a security assessment on this web application that is currently overun with security and privacy vulnerabilities and to document and resolve these issues. The methodologies and findings are detailed below.</p>
         <h2>Methodology</h2>
+        <p>An analyis of all routes was performed. The following routes and their respective URLs were identified:
+                <table>
+                        <tr>
+                                <th>Route</th>
+                                <th>HTTP Verb</th>
+                                <th>Link</th>
+                        </tr>
+                        <tr>
+                                <td>/</td>
+                                <td>GET</td>
+                                <td><a href="https://serene-castle-98212.herokuapp.com/">https://serene-castle-98212.herokuapp.com/</a></td>
+                        </tr>
+                        <tr>
+                                <td>/submit</td>
+                                <td>POST</td>
+                                <td><a href="https://serene-castle-98212.herokuapp.com/submit">https://serene-castle-98212.herokuapp.com/submit</a></td>
+                        </tr>
+                        <tr>
+                                <td>/scores.json</td>
+                                <td>GET</td>
+                                <td><a href="https://serene-castle-98212.herokuapp.com/scores.json">https://serene-castle-98212.herokuapp.com/scores.json</a></td>
+                        </tr>
+                </table>
+        </p>
+        <p>The following tools were then deployed to scan the web app and gather information regarding the app's vulnerabilities related to security and privacy:
+                <ul> 
+                        <li>Burp Suite</li>
+                        <li>sqlmap</li>
+                        <li>Nikto</li>
+                        <li>Kali Linyux</li>
+                </ul></p>
         <h2>Abstract of Findings</h2>
+        <p>It was discovered that the product contains multiple security and privacy vulnerabilites.</p>
         <h2>Issues Found</h2>
-        <li>
-                <ol> Issue 1:
-                        <li>
-                                <ul> a;kjf</ul>
+                <ol>
+                        <li>Issue 1:</li>
+                        <ul>
+                                <li> a;kjf</li>
+                                <li> uiglh</li>
+                        </ul>
                 </ol>
-        </li>
         <h2>Conclusion</h2>
         <h2>References</h2>
 </body>
