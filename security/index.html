@@ -42,20 +42,28 @@
         </p>
         <p>The following tools were then deployed to scan the web app and gather information regarding the app's vulnerabilities related to security and privacy:
                 <ul> 
-                        <li>Burp Suite</li>
-                        <li>sqlmap</li>
+                        <li>Kali Linux</li>
                         <li>Nikto</li>
-                        <li>Kali Linyux</li>
+                        <li>Burp Suite</li>
                 </ul></p>
         <h2>Abstract of Findings</h2>
         <p>It was discovered that the product contains multiple security and privacy vulnerabilites.</p>
         <h2>Issues Found</h2>
                 <ol>
-                        <li>Issue 1:</li>
-                        <ul>
-                                <li> a;kjf</li>
-                                <li> uiglh</li>
-                        </ul>
+                        <li>The first vulnerability detected is Cross-Site Scripting (XSS) susceptibility, as seen below:</br>
+                        <img class="sameline" src="xss.jpeg" alt="Image of XSS performed on the web app">
+                        <p>This example of XSS was created when the script "< script>alert("hello")< /script>" was entered alongside the username data type and submitted via the POST / route. This was achieved by using the terminal to enter the following command: curl --data "username=hacked< script>alert("hello")< /script>&score=1000000&grid={a:b}" https://serene-castle-98212.herokuapp.com/submit</p>
+                        <p>The severity level of this issue is MEDIUM because an unaware user can be redirected to a more malicious website, the attack can cause popups and drastically deteriorate user experience, and unwanted content could be injected to a website.
+                        <p>This issue can be resolved by restricting the se of special characters upon user input (ie. never, ever trust user input!). A simple one line code to prevent XSS can be as follows: usernameItem = usernameItem.replace(/[^\w\s]/gi, '');
+                        <p>See below for the Nikto report detailing additional XSS vulnerability information for this app:</p>
+                        <img class="sameline" src="nikto.jpeg" alt="Image of results from Nikto"></br></br>
+                        </li>
+                        <li>The app is also vulnerable to straight injection attacks. Data from the entire database collection can be retrieved by injecting conditional operators alongside the username data type in the query string. For example, the retrieval of data from username values that are not equal to a username value that DOES NOT exist in the collection.  This poses serious privacy concerns, as other users' data and information could be extracted and used maliciously. An example of this attack: <a href="https://serene-castle-98212.herokuapp.com/scores.json?username[$ne]=userthatdoesnotexist">https://serene-castle-98212.herokuapp.com/scores.json?username[$ne]=userthatdoesnotexist</a>
+                        <p>The severity level of this issue is HIGH because multiple users can fall victim to this type of attack. Their private and personal information could be extracted and used maliciously.</p>
+                        <p>This issue can be resolved by restricting conditional operators.</p>
+                        <p>See below for the straight injection performed on the website to retrieve all user data:</p>
+                        <img class="sameline" src="straightinjection.jpeg" alt="Image of straigh injection performed on the website"></br></br>
+                        <li>
                 </ol>
         <h2>Conclusion</h2>
         <h2>References</h2>

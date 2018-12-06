@@ -5,3 +5,7 @@ th {
 th, td {
     padding-right: 25px;
 }
+
+.sameline {
+    display: inline;
+}
