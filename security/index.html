@@ -42,12 +42,13 @@
         </p>
         <p>The following tools were then deployed to scan the web app and gather information regarding the app's vulnerabilities related to security and privacy:
                 <ul> 
+                        <li>Command Line Terminal</li>
+                        <li>Google Chrome</li>
                         <li>Kali Linux</li>
                         <li>Nikto</li>
-                        <li>Burp Suite</li>
                 </ul></p>
         <h2>Abstract of Findings</h2>
-        <p>It was discovered that the product contains multiple security and privacy vulnerabilites.</p>
+        <p>It was discovered that the product contains multiple security and privacy vulnerabilites. The web app was found to contain a few of the top vulnerabilities as detailed in the <a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">OWASP Top 10 Application Security Risk</a></p>
         <h2>Issues Found</h2>
                 <ol>
                         <li>The first vulnerability detected is Cross-Site Scripting (XSS) susceptibility, as seen below:</br>
@@ -63,9 +64,14 @@
                         <p>This issue can be resolved by restricting conditional operators.</p>
                         <p>See below for the straight injection performed on the website to retrieve all user data:</p>
                         <img class="sameline" src="straightinjection.jpeg" alt="Image of straigh injection performed on the website"></br></br>
-                        <li>
                 </ol>
         <h2>Conclusion</h2>
+        <p>In conclusion, the vulnerabilites listed are simple fixes given time and effort to place these mitigations. Many top vulnerabilites, in particular those listed within OWASP Top 10, can be mitigated with careful user input restrictions.  Remember: never, ever trust user input!
         <h2>References</h2>
+        <ul>
+                <li><a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">OWASP Top 10 Application Security Risk</a></li>
+                <li><a href="https://www.kali.org/">Kali Linux</a></li>
+                <li><a href="https://cirt.net/Nikto2">Nikto</a></li>
+        </ul>
 </body>
 </html>
